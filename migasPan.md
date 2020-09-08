@@ -40,7 +40,10 @@ Dentro del archivo:
 export const TIPO_MENU:SERVICES : [TipoMenuRestService]
 
 
-**NOTA**: En el modulo importar FormsModule. 
+**NOTA**: En el modulo.
+
+
+imortar: FormsModule. 
 entryComponents: el modal
 providers: ...SERVICIOS_TIPO_MENU
 
