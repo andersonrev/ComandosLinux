@@ -29,8 +29,9 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 " Netdtree se cierra cuando se abre un archivo
