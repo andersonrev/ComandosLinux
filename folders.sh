@@ -9,6 +9,7 @@
 # Y LIIISTOOOOOOOOOO!!
 #!/bin/bash
 
+# Dentro de un directorio ejecutar con el nombre del script. eg:$ folder.sh
 echo Escribe el nombre del modulo a crearse eg: paso-servicio:
 read varname
 echo Se ha creado la estructura del modulo: $varname
