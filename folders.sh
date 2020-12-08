@@ -5,11 +5,11 @@
 # 1- Dar permisos al script.. -> Se recomienda ubicar el script en un directorio aparte.
 #    chmod u+x folder.sh
 # 2- Crear un enlace  del script a la carpeta de binarios
-# sudo ln -s /home/andersonrev/carpetaScripts/folder.sh /usr/bin
+# sudo ln -s /home/andersonrev/carpetaScripts/folders.sh /usr/bin
 # Y LIIISTOOOOOOOOOO!!
 #!/bin/bash
 
-# Dentro de un directorio ejecutar con el nombre del script. eg:$ folder.sh
+# Dentro de un directorio ejecutar con el nombre del script. eg:$ folders.sh
 echo Escribe el nombre del modulo a crearse eg: paso-servicio:
 read varname
 echo Se ha creado la estructura del modulo: $varname
