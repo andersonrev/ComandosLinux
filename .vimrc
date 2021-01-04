@@ -30,6 +30,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
 call plug#end()
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 colorscheme gruvbox
@@ -45,6 +46,26 @@ let mapleader=" "
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>nt :NERDTreeFind<CR>
 
+" KITE
+let g:kite_supported_languages = ['javascript', 'python']
+
+" coc
+autocmd FileType python let b:coc_suggest_disable = 1
+autocmd FileType javascript let b:coc_suggest_disable = 1
+autocmd FileType scss setl iskeyword+=@-
 "creando atajos
-" nmap <Leader>w :w<CR>
-" namp <Leader>q :q<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
+
+" Remap key for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" use <c-space> to trigger completion
+if &filetype == "javascript" || &filetype == "python"
+  inoremap <c-space> <C-x><C-u>
+else
+  inoremap <silent><expr> <c-space> coc#refresh()
+endif
