@@ -31,6 +31,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
+Plug 'ap/vim-css-color'
 call plug#end()
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 colorscheme gruvbox
