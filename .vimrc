@@ -35,7 +35,9 @@ Plug 'ap/vim-css-color'
 call plug#end()
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 colorscheme gruvbox
+set background=dark
 let g:gruvbox_contrast_dark = "hard"
+
 " Netdtree se cierra cuando se abre un archivo
 
 let g:depleote#enable_at_startup = 1
