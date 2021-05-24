@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo snap install webstorm --classic
 
 sudo snap install gitkraken --classic
 sudo snap install spotify
