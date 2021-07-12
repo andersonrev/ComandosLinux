@@ -30,6 +30,10 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams
 
 sudo apt update
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+sudo apt install docker-compose
 sudo apt install teams
 
 sudo apt install neovim
