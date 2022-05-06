@@ -14,7 +14,7 @@ set laststatus=2
 
 call plug#begin('~/.vim/plugged')
 
-" syntax
+"  collection  of language syntax
 Plug 'sheerun/vim-polyglot'
 " Plug 'HerringtonDarkholme/yats.vim' "syntax ther TypeScript
 " Plug 'leafgarland/typescript-vim' "TypeScript syntax file
@@ -31,19 +31,25 @@ Plug 'morhetz/gruvbox'
 "" IDE: para saltar mas rapida
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
+
+"" buscar archivos"
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-signify'
-Plug 'yggdroot/indentline'
+
+"" Comentar codigo"
 Plug 'scrooloose/nerdcommenter'
 
+
+"" Muestra si se add lineas, modificaron o eliminadas"
+Plug 'mhinz/vim-signify'
+" Muestra lineas verticales en indentaciones
+Plug 'yggdroot/indentline'
 
 " Typing
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim'
-
-
+  
 " Para abrir desde teclado con nerdTree y navegar entre pantallas 
 " CTRL + h o CTRL + l => navegar entre pantallas.
 " tmux
@@ -70,8 +76,8 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = "hard"
 
-let g:coc_global_extensions = [ 'coc-tsserver' ]
-" Netdtree se cierra cuando se abre un archivo
+let g:coc_global_extensions = [ 'coc-tsserver']
+" Netdtree se cierra cuando se abre un archivoc
 let NERDTreeQuitOnOpen=1
 
 " Split Resize
@@ -82,6 +88,7 @@ nnoremap <Leader>< 10<C-w>
 "espacio + s => escribir dos letras y dirigirse a la linea.
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>nt :NERDTreeFind<CR>
+autocmd VimEnter * NERDTree
 map <Leader>p :Files<CR> "Buscar archivos
 map <Leader>ag :Ag<CR>
 
@@ -92,6 +99,9 @@ autocmd FileType scss setl iskeyword+=@-@
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 
+
+
+
 " Remap key for gotos 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -100,10 +110,10 @@ nmap <silent> gr <Plug>(coc-references)
 
 " tmux navigator
 "
-nnoremap <silent> <Leader><C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <Leader><C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <Leader><C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <Leader><C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 " buffers
 map <Leader>ob :Buffers<cr>
@@ -123,9 +133,21 @@ endif
 " others
 " let g:depleote#enable_at_startup = 1
 
-"" KITE
-" let g:kite_supported_languages = ['javascript', 'python']
 
 " coc
 " autocmd FileType python let b:coc_suggest_disable = 1
 " autocmd FileType javascript let b:coc_suggest_disable = 1
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr><TAB> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
