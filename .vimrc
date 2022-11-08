@@ -39,6 +39,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify'
 " Muestra lineas verticales en indentaciones
 Plug 'Yggdroot/indentLine'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Typing
 Plug 'jiangmiao/auto-pairs'
@@ -53,13 +54,15 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " autocomplete
 "Plug 'https://github.com/SirVer/ultisnips.git'
-Plug 'neovim/nvim-lspconfig'
+" Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " status bar indicador - lightline
-Plug 'maximbaz/lightline-ale'
+" lightline muestra >> en el codigo 
+Plug 'maximbaz/lightline-ale' 
 Plug 'itchyny/lightline.vim'
-" 
+
+" OTROS
 Plug 'ap/vim-css-color'
 Plug 'iamcco/coc-angular'
 
@@ -80,9 +83,6 @@ let g:user_emmet_mode="n"
 let g:user_emmet_leader_key=","
 let g:user_emmet_settings={'javascript':{'extends':'jsx'}}
 
-" Prettier confg
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-nnoremap <C-D> :Prettier<CR>
 
 "Netdtree config
 let NERDTreeQuitOnOpen=1
@@ -98,18 +98,19 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = "hard"
 
-let g:coc_global_extensions = [ 'coc-tsserver']
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-prettier']
 
 " Split Resize
-nnoremap <Leader>> 10<C-w>
-nnoremap <Leader>< 10<C-w>
+nnoremap <Leader>> 10<C-w>>
+nnoremap <Leader>< 10<C-w><
 
 
 "Buscar archivos
 map <Leader>b :Files<CR>
 
 
-nmap <Leader>s <Plug>(easymotion-s2)
+
+
 
 
 autocmd FileType scss setl iskeyword+=@-@
@@ -118,11 +119,15 @@ autocmd FileType scss setl iskeyword+=@-@
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 
+" tabs navigation
+map <Leader>h :tabprevious<cr>
+map <Leader>l :tabnext<cr>
 
+" faster scrolling
+nnoremap <C-j> 10<C-e>
+nnoremap <C-k> 10<C-y>
 
-
-
-
+nmap <Leader>s <Plug>(easymotion-s2)
 
 " tmux navigator
 "
@@ -170,6 +175,10 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+
+" Prettier confg
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nnoremap <C-D> :Prettier<CR>
 
 
 
